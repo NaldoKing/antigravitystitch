@@ -15,3 +15,7 @@ Ces directives sont prioritaires et s'appliquent à tous les projets créés ou 
 
 4. **Authentification Éprouvée (Zéro faille)** :
    - Utiliser exclusivement **Clerk**, **Supabase Auth** ou **Firebase Auth**.
+
+5. **Excellence et Performance Maximale du Design (Stitch MCP & Stitch Skills)** :
+   - Dès qu'un sujet touche au design/UI/UX, exploiter à 100% les capacités du serveur Stitch MCP et de la suite Stitch Skills.
+   - Enrichissement systématique des prompts (`enhance-prompt`), standards esthétiques premium (`taste-design`, `design-md`), déploiement de Design Systems complets (`stitch-manage-design-system`) et conversion en composants modulaires de haute précision (`stitch-react-components`).

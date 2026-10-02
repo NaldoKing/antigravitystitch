@@ -37,3 +37,14 @@ Ces règles sont strictes et doivent être respectées impérativement avant et 
   1. **Clerk**
   2. **Supabase Auth**
   3. **Firebase Auth**
+
+---
+
+## 5. Performance Maximale Obligatoire pour le Design (Stitch MCP & Stitch Skills)
+* **Dès qu'il est question de design, d'interface (UI) ou d'expérience utilisateur (UX) :**
+  * **Exploitation maximale du serveur Stitch MCP** : Ne jamais produire d'interfaces basiques ou génériques. Mobiliser l'ensemble des capacités de l'API Stitch (création de projet, génération d'écrans haute-fidélité, édition d'écrans, création de variantes et application de thèmes globaux).
+  * **Mobilisation maximale des Stitch Skills** :
+    * Activer systématiquement le pipeline d'enrichissement de prompts (`enhance-prompt`) pour convertir toute idée en prompt UI/UX exhaustif et professionnel.
+    * Imposer les standards esthétiques stricts et anti-génériques via `taste-design` et `design-md` (typographie soignée, palettes HSL calibrées, micro-interactions, layouts asymétriques).
+    * Générer et synchroniser un véritable Design System (`DESIGN.md`) appliqué à tous les écrans (`stitch-manage-design-system`).
+    * Pour le passage au code, convertir les designs en composants React/Vite modulaires et pixel-perfect via `stitch-react-components` et `react-vite-dashboard`.
