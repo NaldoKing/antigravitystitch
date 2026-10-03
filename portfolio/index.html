@@ -1,0 +1,1546 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio — Développeur Fullstack & UI/UX Designer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ===== VARIABLES ===== */
+      :root {
+        --primary: #0062ff;
+        --primary-dark: #0041b0;
+        --primary-light: #5b9bff;
+        --primary-soft: rgba(0, 98, 255, 0.08);
+        --secondary: #00d4ff;
+        --accent: #ff6b00;
+        --success: #00c853;
+        --warning: #ffc400;
+        --danger: #ff3d00;
+        --dark: #0b1a33;
+        --gray: #64748b;
+        --light-gray: #f8fafc;
+        --light: #f1f5f9;
+        --white: #ffffff;
+        --gradient-primary: linear-gradient(135deg, #0062ff 0%, #0039cb 100%);
+        --gradient-premium: linear-gradient(
+          135deg,
+          #0062ff 0%,
+          #00d4ff 50%,
+          #0062ff 100%
+        );
+        --gradient-glow: radial-gradient(
+          circle at center,
+          rgba(0, 98, 255, 0.4) 0%,
+          transparent 70%
+        );
+        --shadow-sm: 0 4px 12px rgba(11, 26, 51, 0.05);
+        --shadow: 0 10px 30px -10px rgba(0, 98, 255, 0.15);
+        --shadow-lg: 0 20px 50px -12px rgba(11, 26, 51, 0.2);
+        --shadow-glow: 0 0 20px rgba(0, 98, 255, 0.3);
+        --glass-bg: rgba(255, 255, 255, 0.7);
+        --glass-border: rgba(255, 255, 255, 0.5);
+        --blur: blur(12px);
+        --radius-sm: 8px;
+        --radius: 16px;
+        --radius-lg: 24px;
+        --radius-full: 9999px;
+        --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+        --transition: all 0.3s var(--ease-smooth);
+        --transition-bounce: all 0.4s var(--ease-out-back);
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+        --font-body: "Outfit", sans-serif;
+      }
+      /* ===== RESET ===== */
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        scroll-padding-top: 100px;
+      }
+      body {
+        font-family: var(--font-body);
+        background: #fff;
+        color: var(--dark);
+        line-height: 1.7;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        background-image:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(0, 98, 255, 0.03) 0%,
+            transparent 20%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(0, 212, 255, 0.03) 0%,
+            transparent 20%
+          );
+      }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: var(--font-heading);
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1rem;
+        color: var(--dark);
+        letter-spacing: -0.02em;
+      }
+      a {
+        color: var(--primary);
+        text-decoration: none;
+        transition: var(--transition);
+        position: relative;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      section {
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .container {
+        width: 100%;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+      /* ===== BUTTONS ===== */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: var(--radius-full);
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: var(--transition-bounce);
+        border: none;
+        outline: none;
+        gap: 12px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        letter-spacing: 0.02em;
+        font-family: var(--font-body);
+      }
+      .btn-icon {
+        transition: transform 0.4s var(--ease-out-back);
+      }
+      .btn:hover .btn-icon {
+        transform: translateX(4px) rotate(-10deg);
+      }
+      .btn:active {
+        transform: scale(0.96);
+      }
+      .btn-primary {
+        background: var(--gradient-premium);
+        background-size: 200% auto;
+        color: white;
+        box-shadow: var(--shadow-glow);
+        animation: shimmer 5s infinite linear;
+      }
+      .btn-primary:hover {
+        background-position: right center;
+        box-shadow: 0 10px 25px rgba(0, 98, 255, 0.4);
+        transform: translateY(-4px);
+      }
+      .btn-outline {
+        background: var(--white);
+        color: var(--primary);
+        box-shadow: inset 0 0 0 2px var(--primary-light);
+      }
+      .btn-outline:hover {
+        background: var(--primary-soft);
+        box-shadow: inset 0 0 0 2px var(--primary);
+        transform: translateY(-4px);
+      }
+      /* ===== HERO ===== */
+      .hero {
+        padding: 120px 0 100px;
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(0, 98, 255, 0.1) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at bottom left,
+            rgba(0, 212, 255, 0.1) 0%,
+            transparent 40%
+          );
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+      }
+      .hero-particles {
+        display: block;
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+          var(--primary-light) 1px,
+          transparent 1px
+        );
+        background-size: 40px 40px;
+        opacity: 0.15;
+        mask-image: radial-gradient(
+          circle at center,
+          black 40%,
+          transparent 80%
+        );
+        -webkit-mask-image: radial-gradient(
+          circle at center,
+          black 40%,
+          transparent 80%
+        );
+      }
+      .hero .container {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 60px;
+        align-items: center;
+      }
+      .hero-content {
+        opacity: 0;
+        animation: fadeInUpStagger 0.8s var(--ease-out-back) forwards;
+      }
+      .hero-content > * {
+        opacity: 0;
+        animation: fadeInUpStagger 0.8s var(--ease-out-back) forwards;
+      }
+      .badge {
+        animation-delay: 0.1s;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 16px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 98, 255, 0.2);
+        border-radius: var(--radius-full);
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.9rem;
+        margin-bottom: 24px;
+        box-shadow: var(--shadow-sm);
+      }
+      .pulse {
+        width: 8px;
+        height: 8px;
+        background-color: var(--success);
+        border-radius: 50%;
+        box-shadow: 0 0 0 4px rgba(0, 200, 83, 0.2);
+        animation: pulseGlow 2s infinite;
+      }
+      .hero-title {
+        animation-delay: 0.2s;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        margin-bottom: 24px;
+        letter-spacing: -0.03em;
+        color: var(--dark);
+        line-height: 1.1;
+      }
+      .hero-title .highlight {
+        color: #3498db;
+      }
+      .hero-description {
+        animation-delay: 0.3s;
+        font-size: 1.25rem;
+        color: var(--gray);
+        margin-bottom: 32px;
+        max-width: 580px;
+        font-weight: 400;
+      }
+      .hero-actions {
+        animation-delay: 0.4s;
+        display: flex;
+        gap: 16px;
+        margin-bottom: 50px;
+      }
+      .hero-stats {
+        animation-delay: 0.6s;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        padding: 20px;
+        background: var(--glass-bg);
+        border: 1px solid var(--glass-border);
+        backdrop-filter: blur(16px);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        width: fit-content;
+        margin: 0 auto;
+      }
+      .stat-item {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+        display: block;
+        text-align: left;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        padding-right: 30px;
+      }
+      .stat-item:last-child {
+        border-right: none;
+        padding-right: 0;
+      }
+      .stat-value {
+        font-size: 1.8rem;
+        color: var(--primary);
+        margin-bottom: 0;
+        font-family: var(--font-heading);
+        font-weight: 700;
+      }
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 500;
+      }
+      .hero-image {
+        position: relative;
+        perspective: 1000px;
+        opacity: 0;
+        animation: fadeInUpStagger 1s var(--ease-out-back) 0.4s forwards;
+      }
+      .video-placeholder {
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        transform-style: preserve-3d;
+        transform: rotateY(-10deg) rotateX(5deg);
+        transition: transform 0.5s var(--ease-out-back);
+        background: white;
+        padding: 10px;
+        overflow: hidden;
+      }
+      .video-placeholder img {
+        border-radius: 16px;
+        width: 100%;
+        height: auto;
+      }
+      .hero-image:hover .video-placeholder {
+        transform: rotateY(0) rotateX(0) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+      }
+      .floating-elements {
+        position: absolute;
+        inset: 0;
+        z-index: 4;
+        pointer-events: none;
+      }
+      .floating-element {
+        position: absolute;
+        width: 70px;
+        height: 70px;
+        background: white;
+        box-shadow: var(--shadow-lg);
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        color: var(--primary);
+        pointer-events: auto;
+      }
+      .floating-element svg {
+        width: 32px;
+        height: 32px;
+        filter: drop-shadow(0 4px 6px rgba(0, 98, 255, 0.2));
+      }
+      .fe-1 {
+        top: 10%;
+        left: -10%;
+        animation: floatComplex 8s ease-in-out infinite;
+      }
+      .fe-2 {
+        bottom: 20%;
+        left: -20%;
+        animation: floatComplex 10s ease-in-out infinite 1s;
+      }
+      .fe-3 {
+        top: -5%;
+        right: 10%;
+        animation: floatComplex 9s ease-in-out infinite 2s;
+      }
+      /* ===== SECTION HEADERS ===== */
+      .section-header {
+        margin-bottom: 70px;
+        text-align: center;
+      }
+      .section-title {
+        font-size: 3rem;
+        color: var(--dark);
+        margin-bottom: 16px;
+      }
+      .section-subtitle {
+        font-size: 1.25rem;
+        color: var(--gray);
+      }
+      /* ===== WHY ME ===== */
+      .why-us {
+        background: #fff;
+      }
+      .why-us-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 50px;
+      }
+      .why-card {
+        background: white;
+        border-radius: var(--radius);
+        padding: 50px 30px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+      .why-card:hover {
+        transform: translateY(-10px) rotateX(5deg) rotateY(-5deg) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 98, 255, 0.15);
+        border-color: rgba(0, 98, 255, 0.2);
+      }
+      .why-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--light-gray);
+        color: var(--primary);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 30px;
+        font-size: 2rem;
+        transition: all 0.4s var(--ease-out-back);
+      }
+      .why-card:hover .why-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 10px 25px rgba(0, 98, 255, 0.3);
+      }
+      .why-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+        color: #000000;
+        font-weight: 800;
+      }
+      .why-card p {
+        color: #000000;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+      .feature-metrics {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+      }
+      .metric {
+        background: white;
+        padding: 10px 20px;
+        border-radius: var(--radius-sm);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+      .why-card:hover .metric {
+        transform: translateY(5px);
+        box-shadow: none;
+        background: var(--light-gray);
+      }
+      .metric-value {
+        color: var(--primary);
+        font-weight: 900;
+        font-size: 1.25rem;
+        display: block;
+      }
+      .metric-label {
+        font-size: 0.85rem;
+        color: var(--gray);
+      }
+      /* ===== FEATURES / SERVICES ===== */
+      .feature-section {
+        padding: 120px 0;
+        position: relative;
+        background: linear-gradient(180deg, var(--light-gray) 0%, white 100%);
+      }
+      .feature-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          var(--primary-light),
+          transparent
+        );
+        opacity: 0.3;
+      }
+      .feature-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        margin-bottom: 120px;
+        perspective: 1000px;
+      }
+      .feature-row:last-child {
+        margin-bottom: 0;
+      }
+      .feature-row.reverse {
+        direction: rtl;
+      }
+      .feature-row.reverse > * {
+        direction: ltr;
+      }
+      .feature-badge {
+        background: rgba(0, 98, 255, 0.05);
+        color: var(--primary);
+        padding: 8px 16px;
+        border-radius: var(--radius-full);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        margin-bottom: 24px;
+        display: inline-block;
+        border: 1px solid rgba(0, 98, 255, 0.1);
+        box-shadow: 0 0 15px rgba(0, 98, 255, 0.1);
+      }
+      .feature-content h3 {
+        font-size: 2.5rem;
+        margin-bottom: 24px;
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        display: inline-block;
+      }
+      .feature-content p {
+        color: var(--gray);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 30px;
+      }
+      .feature-list li {
+        font-size: 1.1rem;
+        margin-bottom: 18px;
+        color: var(--dark);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: transform 0.3s ease;
+      }
+      .feature-list li:hover {
+        transform: translateX(10px);
+      }
+      .feature-list li svg {
+        color: var(--primary);
+        background: white;
+        border-radius: 50%;
+        padding: 3px;
+        width: 26px;
+        height: 26px;
+        min-width: 26px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .stats-row {
+        display: flex;
+        gap: 30px;
+        margin-top: 20px;
+        margin-bottom: 30px;
+      }
+      .stat-box {
+        text-align: center;
+        padding: 10px;
+      }
+      .stat-number {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+        margin-bottom: 5px;
+        font-family: var(--font-heading);
+      }
+      .stat-text {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-weight: 500;
+      }
+      .feature-image {
+        position: relative;
+        transform-style: preserve-3d;
+      }
+      .feature-image img {
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        transition: var(--transition);
+        animation: float3D 8s ease-in-out infinite;
+        width: 100%;
+      }
+      .feature-image::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        border: 1px solid rgba(0, 98, 255, 0.2);
+        border-radius: 30px;
+        transform: translateZ(-50px) rotate(3deg);
+        opacity: 0.5;
+        transition: var(--transition);
+      }
+      .feature-image:hover img {
+        box-shadow: 0 30px 60px rgba(0, 98, 255, 0.2);
+      }
+      .feature-image:hover::before {
+        transform: translateZ(-30px) rotate(-2deg);
+        border-color: var(--primary-light);
+      }
+      /* ===== FUNCTIONALITY / PROJECTS ===== */
+      .functionality {
+        background: var(--light-gray);
+      }
+      .functionality-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+      .functionality-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        transition: all 0.4s var(--ease-out-back);
+        border: 1px solid white;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+      .functionality-card:hover {
+        background: white;
+        transform: translateY(-12px) rotateX(3deg) rotateY(-3deg);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        border-color: var(--primary-soft);
+      }
+      .functionality-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: var(--gradient-primary);
+        transition: width 0.4s ease;
+      }
+      .functionality-card:hover::after {
+        width: 100%;
+      }
+      .functionality-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--white);
+        color: var(--primary);
+        border-radius: 20px;
+        display: grid;
+        place-items: center;
+        margin: 0 auto 24px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.5s var(--ease-out-back);
+      }
+      .functionality-card:hover .functionality-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 10px 25px rgba(0, 98, 255, 0.3);
+      }
+      .functionality-card h3 {
+        color: #000000;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+      .functionality-card p {
+        color: #000000;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+      .card-footer {
+        margin-top: 20px;
+      }
+      .card-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+      .card-link:hover {
+        color: var(--primary-dark);
+        transform: translateX(5px);
+      }
+      .functionality-card:hover .card-link {
+        transform: translateX(5px);
+        color: var(--primary-dark);
+      }
+      /* ===== DOCUMENT MANAGEMENT / SKILLS ===== */
+      .document-management {
+        background: #fff;
+      }
+      .management-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-bottom: 60px;
+      }
+      .management-card {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 30px;
+        border-radius: var(--radius);
+        text-align: center;
+        box-shadow: var(--shadow);
+        transition: all 0.3s ease;
+      }
+      .management-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 98, 255, 0.15);
+      }
+      .management-card h3 {
+        color: var(--dark);
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+      }
+      .management-card p {
+        color: var(--gray);
+        font-size: 0.95rem;
+      }
+      .document-management .btn {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+      }
+      /* ===== CTA ===== */
+      .cta {
+        background: var(--gradient-premium);
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 150%;
+        height: 150%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 60%
+        );
+        transform: translate(-50%, -50%);
+        animation: pulseGlow 4s infinite;
+      }
+      .cta h2 {
+        color: var(--white);
+        font-size: 3rem;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 20px;
+      }
+      .cta p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .cta .btn-primary {
+        background: var(--white);
+        color: var(--primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        animation: pulseGlow 3s infinite;
+        position: relative;
+        z-index: 2;
+        margin-top: 40px;
+      }
+      .cta .btn-primary:hover {
+        background: var(--light);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+      }
+      /* ===== ANIMATIONS ===== */
+      @keyframes fadeInUpStagger {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes floatComplex {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(10px, -15px) rotate(2deg);
+        }
+        66% {
+          transform: translate(-5px, 10px) rotate(-2deg);
+        }
+      }
+      @keyframes pulseGlow {
+        0% {
+          box-shadow: 0 0 0 0 rgba(0, 98, 255, 0.4);
+        }
+        70% {
+          box-shadow: 0 0 0 15px rgba(0, 98, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 98, 255, 0);
+        }
+      }
+      @keyframes shimmer {
+        0% {
+          background-position: 200% center;
+        }
+        100% {
+          background-position: -200% center;
+        }
+      }
+      @keyframes float3D {
+        0% {
+          transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+        }
+        50% {
+          transform: translate3d(0, -15px, 20px) rotateX(5deg) rotateY(-5deg);
+        }
+        100% {
+          transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+        }
+      }
+      /* ===== SCROLL REVEAL ===== */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 992px) {
+        .container {
+          padding: 0 30px;
+        }
+        .feature-row {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 50px;
+        }
+        .hero .container {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 50px;
+        }
+        .hero-description {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .hero-stats {
+          margin: 0 auto;
+        }
+        .hero-actions {
+          justify-content: center;
+        }
+        .why-us-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .functionality-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .management-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .cta h2 {
+          font-size: 2.5rem;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        .feature-content h3 {
+          font-size: 1.8rem;
+        }
+        .hero-stats {
+          flex-direction: column;
+          gap: 20px;
+          text-align: center;
+        }
+        .hero-stats .stat-item {
+          border-right: none;
+          padding-right: 0;
+          padding-bottom: 20px;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .hero-stats .stat-item:last-child {
+          border-bottom: none;
+          padding-bottom: 0;
+        }
+        .hero-actions {
+          flex-direction: column;
+          gap: 16px;
+        }
+        .why-us-grid {
+          grid-template-columns: 1fr;
+        }
+        .functionality-grid {
+          grid-template-columns: 1fr;
+        }
+        .management-grid {
+          grid-template-columns: 1fr;
+        }
+        .feature-row.reverse {
+          direction: ltr;
+        }
+        .stats-row {
+          flex-direction: column;
+          gap: 20px;
+        }
+        .floating-elements {
+          display: none;
+        }
+        .feature-image img {
+          animation: none !important;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ==================== HERO ==================== -->
+    <section class="hero">
+      <div class="hero-particles"></div>
+      <div class="container">
+        <div class="hero-content">
+          <div class="badge">
+            <span class="pulse"></span>
+            <span>Disponible pour vos projets</span>
+          </div>
+          <h1 class="hero-title">
+            Je suis
+            <span class="highlight">KABORE Fabre Donald Pascal</span>, passionné
+            par le web, je conçois des interfaces intuitives et efficaces.
+          </h1>
+          <p class="hero-description">
+            Développeur Full-Stack en formation à l’ISTA NTIC Hay Riad à Rabat,
+            je travaille avec HTML, CSS, JavaScript, PHP et MySQL pour créer des
+            applications web fonctionnelles et centrées utilisateur. Curieux et
+            motivé, j’aime transformer des idées en projets concrets et
+            continuer à apprendre de nouvelles technologies.
+          </p>
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-outline">
+              <span>Découvrir mes services</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="btn-icon"
+              >
+                <path
+                  d="M7.41 8.59L12 13.17L16.59 8.59L18 10L12 16L6 10L7.41 8.59Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">98%</div>
+              <div class="stat-label">
+                <p>Satisfaction client</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">
+                <p>50+</p>
+              </div>
+              <div class="stat-label">
+                <p>Projets livrés</p>
+              </div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">
+                <p>100%</p>
+              </div>
+              <div class="stat-label">
+                <p>Approche centrée UX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="video-placeholder">
+            <img src="./images/donaldportfolio.jpg" alt="image de donald" />
+          </div>
+          <div class="floating-elements">
+            <div class="floating-element fe-1">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM9 17H7V10H9V17ZM13 17H11V7H13V17ZM17 17H15V13H17V17Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <div class="floating-element fe-2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <div class="floating-element fe-3">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M21 18V19C21 20.1 20.1 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.9 3.89 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.89 6 10 6.9 10 8V16C10 17.1 10.89 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== WHY ME ==================== -->
+    <section id="why-us" class="why-us reveal">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Pourquoi travailler avec moi ?</h2>
+          <p class="section-subtitle">
+            Une expertise complète pour des projets digitaux créatifs et
+            performants
+          </p>
+        </div>
+        <div class="why-us-grid">
+          <div class="why-card">
+            <div class="why-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Design adapté à vos besoins</h3>
+            <p>
+              Mes créations UI/UX s'adaptent à tous les secteurs : startups,
+              e-commerce, applications métier, plateformes SaaS et sites
+              vitrines, quelle que soit l'envergure du projet.
+            </p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19 3H14.82C14.4 1.84 13.3 1 12 1C10.7 1 9.6 1.84 9.18 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM12 3C12.55 3 13 3.45 13 4C13 4.55 12.55 5 12 5C11.45 5 11 4.55 11 4C11 3.45 11.45 3 12 3ZM10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Développement rapide et maîtrisé</h3>
+            <p>
+              Je livre un code propre et performant, avec un suivi technique
+              complet, du prototypage au déploiement en production.
+            </p>
+            <div class="feature-metrics">
+              <div class="metric">
+                <span class="metric-value">+60%</span>
+                <span class="metric-label">Engagement utilisateur</span>
+              </div>
+              <div class="metric">
+                <span class="metric-value">-30%</span>
+                <span class="metric-label">Temps de développement</span>
+              </div>
+            </div>
+          </div>
+          <div class="why-card">
+            <div class="why-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3.5 18.49L9.5 12.48L13.5 16.48L22 6.92L20.59 5.51L13.5 13.48L9.5 9.48L2 16.99L3.5 18.49Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Technologies fiables et modernes</h3>
+            <p>
+              J'utilise les frameworks et outils les plus récents, garantissant
+              stabilité, performance et une expérience utilisateur optimale.
+            </p>
+            <div class="feature-badge" style="margin-top: 35px">
+              <span>Stack technique de pointe certifiée</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== SERVICES ==================== -->
+    <section id="services" class="feature-section reveal">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Mes services</h2>
+          <p class="section-subtitle">
+            Des prestations complètes pour donner vie à vos projets digitaux
+          </p>
+        </div>
+        <div class="feature-row">
+          <div class="feature-content">
+            <div class="feature-badge">
+              <p>Design UI/UX</p>
+            </div>
+            <h3>Des interfaces pensées pour vos utilisateurs</h3>
+            <p>
+              Je prends en charge l'ensemble du processus créatif : recherche
+              utilisateur, wireframes, maquettes haute-fidélité et prototypage
+              interactif pour un rendu immédiat et impactant.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+                <span>Maquettes & prototypes interactifs</span>
+              </li>
+              <li>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+                <span>Design system sur-mesure</span>
+              </li>
+              <li>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+                <span>Tests utilisateurs & itérations</span>
+              </li>
+            </ul>
+            <a href="#cta" class="btn btn-outline">
+              <span>Découvrir mes réalisations</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="btn-icon"
+              >
+                <path
+                  d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="feature-image">
+            <img src="./images/intelligentachat.png" alt="Design UI/UX" />
+          </div>
+        </div>
+        <div class="feature-row reverse">
+          <div class="feature-content">
+            <div class="feature-badge">
+              <p>Développement Fullstack</p>
+            </div>
+            <h3>Un code robuste et une performance optimale</h3>
+            <p>
+              Mes applications offrent une expérience fluide et réactive, avec
+              une architecture solide qui garantit la scalabilité de votre
+              projet.
+            </p>
+            <div class="stats-row">
+              <div class="stat-box">
+                <span class="stat-number">100%</span>
+                <span class="stat-text">Responsive design</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">95+</span>
+                <span class="stat-text">Score Lighthouse</span>
+              </div>
+            </div>
+            <a href="#cta" class="btn btn-primary">
+              <span>En savoir plus</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="btn-icon"
+              >
+                <path
+                  d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </a>
+          </div>
+          <div class="feature-image">
+            <img
+              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=550&h=530&fit=crop"
+              alt="Développement Fullstack"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="functionality reveal">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projets récents</h2>
+          <p class="section-subtitle">
+            Découvrez une sélection de projets conçus avec soin, alliant design
+            créatif et développement performant
+          </p>
+        </div>
+        <div class="functionality-grid">
+          <div class="functionality-card">
+            <div class="functionality-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M20 4H4C2.89 4 2.01 4.89 2.01 6L2 18C2 19.11 2.89 20 4 20H20C21.11 20 22 19.11 22 18V6C22 4.89 21.11 4 20 4ZM20 18H4V12H20V18ZM20 8H4V6H20V8Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Application SaaS</h3>
+            <p>
+              Conception et développement d'une plateforme SaaS complète, avec
+              un dashboard intuitif et une interface pensée pour l'utilisateur
+              final.
+            </p>
+            <div class="card-footer" style="margin-top: 50px">
+              <a href="#cta" class="card-link">
+                <span>Voir le projet</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="functionality-card">
+            <div class="functionality-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM13 7H11V13H17V11H13V7Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Site vitrine premium</h3>
+            <p>
+              Création d'un site vitrine moderne avec animations soignées,
+              optimisé pour le référencement et la conversion.
+            </p>
+            <div class="card-footer" style="margin-top: 80px">
+              <a href="#cta" class="card-link">
+                <span>Voir le projet</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="functionality-card">
+            <div class="functionality-icon">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 21.35L10.55 20.03C5.4 15.36 2 12.28 2 8.5C2 5.42 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.42 22 8.5C22 12.28 18.6 15.36 13.45 20.04L12 21.35Z"
+                  fill="currentColor"
+                ></path>
+              </svg>
+            </div>
+            <h3>Interface responsive multi-devices</h3>
+            <p>
+              Développement d'interfaces adaptatives accessibles sur tous les
+              appareils : desktop, tablette et mobile, avec une expérience
+              fluide et cohérente.
+            </p>
+            <div class="card-footer">
+              <a href="#cta" class="card-link">
+                <span>Voir le projet</span>
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==================== STACK TECHNIQUE ==================== -->
+    <section id="stack" class="document-management reveal">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Ma stack technique</h2>
+          <p class="section-subtitle">
+            Des technologies maîtrisées pour des projets solides et évolutifs
+          </p>
+        </div>
+        <div class="management-grid">
+          <div class="management-card">
+            <h3>Frontend moderne</h3>
+            <p>
+              React, Next.js, TypeScript, Tailwind CSS — des outils puissants
+              pour des interfaces réactives et élégantes.
+            </p>
+          </div>
+          <div class="management-card">
+            <h3>Backend robuste</h3>
+            <p>
+              Node.js, Express, bases de données SQL et NoSQL pour une
+              architecture fiable et scalable.
+            </p>
+          </div>
+          <div class="management-card">
+            <h3>Design & prototypage</h3>
+            <p>
+              Figma, Adobe XD — des outils de conception pour des maquettes
+              précises et des prototypes interactifs.
+            </p>
+          </div>
+        </div>
+        <a href="#cta" class="btn btn-primary">
+          <span>Discutons de votre projet</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="btn-icon"
+          >
+            <path
+              d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+    <!-- ==================== CTA / CONTACT ==================== -->
+    <section id="cta" class="cta reveal">
+      <div class="container">
+        <h2>Créons ensemble votre prochain projet digital</h2>
+        <p>
+          Transformez vos idées en expériences digitales mémorables grâce à un
+          design soigné, un code performant et une approche centrée utilisateur.
+        </p>
+        <a
+          href="mailto:contact@monportfolio.dev"
+          class="btn btn-primary"
+          style="margin-top: 76px"
+        >
+          <span>Me contacter</span>
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            class="btn-icon"
+          >
+            <path
+              d="M12 4L10.59 5.41L16.17 11H4V13H16.17L10.59 18.59L12 20L20 12L12 4Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+    <!-- ===== JAVASCRIPT : Scroll Reveal ===== -->
+    <script>
+      // Scroll reveal animation
+      document.addEventListener("DOMContentLoaded", function () {
+        const revealElements = document.querySelectorAll(".reveal");
+        function checkReveal() {
+          const windowHeight = window.innerHeight;
+          revealElements.forEach(function (el) {
+            const elementTop = el.getBoundingClientRect().top;
+            if (elementTop < windowHeight - 100) {
+              el.classList.add("visible");
+            }
+          });
+        }
+        // Check on load
+        checkReveal();
+        // Check on scroll
+        window.addEventListener("scroll", checkReveal);
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
